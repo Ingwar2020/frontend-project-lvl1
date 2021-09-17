@@ -1,7 +1,6 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "type": "module",
   "description": "frontend project lvl 1",
   "main": "index.js",
   "scripts": {
@@ -19,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/Ingwar2020/frontend-project-lvl1/issues"
   },
-  "homepage": "https://github.com/Ingwar2020/frontend-project-lvl1#readme"
+  "type": "module",
+  "homepage": "https://github.com/Ingwar2020/frontend-project-lvl1#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }
