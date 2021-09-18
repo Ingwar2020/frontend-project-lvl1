@@ -1,0 +1,19 @@
+name: Tests eslint
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  tests:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      env:
+          CI: true
+      - name: Run Linter
+        run: |
+          make lint
