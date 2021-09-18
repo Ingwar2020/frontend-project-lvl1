@@ -12,8 +12,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      env:
-          CI: true
-      - name: Run Linter
+      - name: Run linter
         run: |
           make lint
