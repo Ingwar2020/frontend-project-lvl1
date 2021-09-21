@@ -1,9 +1,8 @@
 import readlineSync from 'readline-sync';
-import userName from './cli.js';
+// import { userName } from './cli';
+import introduction, { userName } from './cli.js';
 
-const evenGame = () => {
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-};
+introduction();
 
 const ifNumberEven = (num) => {
   if (num % 2 === 0) {
@@ -12,24 +11,25 @@ const ifNumberEven = (num) => {
   return 'no';
 };
 
-let score = 0;
+export default () => {
+  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  let score = 0;
 
-for (let i = 0; i < 3; i += 1) {
-  const question = Math.floor(Math.random() * 100);
-  const correctAnswer = ifNumberEven(question);
-  console.log(`Question: ${question}`);
-  const userAnswer = readlineSync.question('Your answer: ');
-  if (userAnswer === correctAnswer) {
-    console.log('Correct!');
-    score += 1;
-  } else {
-    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-    console.log(`Let's try again, ${userName}!`);
-    break;
+  for (let i = 0; i < 3; i += 1) {
+    const question = Math.floor(Math.random() * 100);
+    const correctAnswer = ifNumberEven(question);
+    console.log(`Question: ${question}`);
+    const userAnswer = readlineSync.question('Your answer: ');
+    if (userAnswer === correctAnswer) {
+      console.log('Correct!');
+      score += 1;
+    } else {
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+      console.log(`Let's try again, ${userName}!`);
+      break;
+    }
   }
-}
-
-if (score === 3) {
-  console.log(`Congratulations, ${userName}!`);
-}
-export default evenGame;
+  if (score === 3) {
+    console.log(`Congratulations, ${userName}!`);
+  }
+};
