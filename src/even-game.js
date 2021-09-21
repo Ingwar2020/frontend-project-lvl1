@@ -1,5 +1,4 @@
 import readlineSync from 'readline-sync';
-// import { userName } from './cli';
 import introduction, { userName } from './cli.js';
 
 introduction();
