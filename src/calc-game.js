@@ -1,7 +1,7 @@
-import readlineSync from 'readline-sync';
-import introduction, { userName } from './cli.js';
+export const task = 'What is the result of the expression?';
+export const question = [];
+export const correctAnswer = [];
 
-introduction();
 const randomNum = () => Math.floor(Math.random() * 100);
 
 const operators = ['+', '-', '*'];
@@ -14,33 +14,17 @@ const solution = (str) => {
 
   switch (arr[1]) {
     case '+':
-      return Number(arr[0]) + Number(arr[2]);
+      return arr[0] + arr[2];
     case '-':
-      return Number(arr[0]) - Number(arr[2]);
+      return arr[0] - arr[2];
     case '*':
-      return Number(arr[0]) * Number(arr[2]);
+      return arr[0] * arr[2];
     default:
       return null;
   }
 };
 
-export default () => {
-  console.log('What is the result of the expression?');
-
-  for (let i = 0; i < 3; i += 1) {
-    const newExpression = expression();
-    console.log(`Question: ${newExpression}`);
-    const userAnswer = readlineSync.question('Your answer: ');
-    const correctAnswer = solution(newExpression);
-
-    if (correctAnswer === +userAnswer) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-      console.log(`Let's try again, ${userName}!`);
-      // eslint-disable-next-line no-useless-return
-      return;
-    }
-  }
-  console.log(`Congratulations, ${userName}!`);
-};
+for (let i = 0; i < 3; i += 1) {
+  question.push(expression());
+  correctAnswer.push(String(solution(question[i])));
+}
