@@ -19,7 +19,7 @@ export default () => {
         result[i] = '..';
       }
     }
-    question.push(result);
+    question.push(result.join(' '));
   }
   game(task, question, correctAnswer);
 };
