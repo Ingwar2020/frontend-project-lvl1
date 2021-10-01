@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import { task, question, correctAnswer } from '../src/games/prime-game.js';
-import game from '../src/index.js';
+import prime from '../src/games/prime-game.js';
 
-game(task, question, correctAnswer);
+prime();
