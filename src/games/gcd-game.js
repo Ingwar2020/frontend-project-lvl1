@@ -1,23 +1,16 @@
 import getRandom from '../random.js';
 import game from '../index.js';
 
-export default () => {
-  const task = 'Find the greatest common divisor of given numbers.';
-  const question = [];
-  const correctAnswer = [];
-  const arrOfQuestions = [];
+const task = 'Find the greatest common divisor of given numbers.';
 
-  const gcd = (a, b) => {
-    if (b > a) return gcd(b, a);
-    if (!b) return a;
-    return gcd(b, a % b);
-  };
+const gcd = (a, b) => ((b === 0) ? a : gcd(b, a % b));
 
-  for (let i = 0; i < 3; i += 1) {
-    arrOfQuestions.push([getRandom()]);
-    arrOfQuestions[i].push(getRandom());
-    question.push(arrOfQuestions[i].join(' '));
-    correctAnswer.push(String(gcd(arrOfQuestions[i][0], arrOfQuestions[i][1])));
-  }
-  game(task, question, correctAnswer);
+const getQuestionAnswer = () => {
+  const number1 = getRandom();
+  const number2 = getRandom();
+  const question = `${number1} ${number2}`;
+  const correctAnswer = String(gcd(number1, number2));
+  return [question, correctAnswer];
 };
+
+export default () => game(task, getQuestionAnswer);

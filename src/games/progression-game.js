@@ -1,25 +1,26 @@
 import getRandom from '../random.js';
 import game from '../index.js';
 
-export default () => {
-  const task = 'What number is missing in the progression?';
-  const question = [];
-  const correctAnswer = [];
+const task = 'What number is missing in the progression?';
 
-  for (let n = 0; n < 3; n += 1) {
-    const index = getRandom(0, 9);
-    const result = [];
-    let start = getRandom();
-    const step = getRandom(2, 5);
-    for (let i = 0; i < 10; i += 1) {
-      result.push(start);
-      start += step;
-      if (i === index) {
-        correctAnswer.push(String(result[i]));
-        result[i] = '..';
-      }
-    }
-    question.push(result.join(' '));
+const getProgression = (start, step, length) => {
+  const progression = [];
+  for (let i = 0; i < length; i += 1) {
+    progression.push(start + step * i);
   }
-  game(task, question, correctAnswer);
+  return progression;
 };
+
+const getQuestionAnswer = () => {
+  const start = getRandom();
+  const step = getRandom(2, 5);
+  const length = getRandom(5, 10);
+  const hiddenNumber = getRandom(0, length - 1);
+  const progression = getProgression(start, step, length);
+  const correctAnswer = String(progression[hiddenNumber]);
+  progression[hiddenNumber] = '..';
+  const question = progression.join(' ');
+  return [question, correctAnswer];
+};
+
+export default () => game(task, getQuestionAnswer);

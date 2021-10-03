@@ -1,32 +1,29 @@
 import getRandom from '../random.js';
 import game from '../index.js';
 
-export default () => {
-  const task = 'What is the result of the expression?';
-  const question = [];
-  const correctAnswer = [];
-  const operators = ['+', '-', '*'];
-  const operator = () => operators[getRandom(0, 2)];
-  const expression = () => `${getRandom()} ${operator()} ${getRandom()}`;
+const task = 'What is the result of the expression?';
 
-  const solution = (str) => {
-    const arr = str.split(' ');
-
-    switch (arr[1]) {
-      case '+':
-        return +arr[0] + +arr[2];
-      case '-':
-        return arr[0] - arr[2];
-      case '*':
-        return arr[0] * arr[2];
-      default:
-        return null;
-    }
-  };
-
-  for (let i = 0; i < 3; i += 1) {
-    question.push(expression());
-    correctAnswer.push(String(solution(question[i])));
+const calculate = (number1, operator, number2) => {
+  switch (operator) {
+    case '+':
+      return +number1 + +number2;
+    case '-':
+      return number1 - number2;
+    case '*':
+      return number1 * number2;
+    default:
+      return null;
   }
-  game(task, question, correctAnswer);
 };
+
+const getQuestionAnswer = () => {
+  const number1 = getRandom();
+  const number2 = getRandom();
+  const operators = ['+', '-', '*'];
+  const operator = operators[getRandom(0, 2)];
+  const question = `${number1} ${operator} ${number2}`;
+  const correctAnswer = String(calculate(number1, operator, number2));
+  return [question, correctAnswer];
+};
+
+export default () => game(task, getQuestionAnswer);

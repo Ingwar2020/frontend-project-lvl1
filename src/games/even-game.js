@@ -1,20 +1,14 @@
 import getRandom from '../random.js';
 import game from '../index.js';
 
-const ifNumberEven = (num) => {
-  if (num % 2 === 0) {
-    return 'yes';
-  }
-  return 'no';
+const task = 'Answer "yes" if the number is even, otherwise answer "no".';
+const isEven = (number) => number % 2 === 0;
+
+const getQuestionAnswer = () => {
+  const question = getRandom();
+  const correctAnswer = isEven(question) ? 'yes' : 'no';
+
+  return [question, correctAnswer];
 };
 
-export default () => {
-  const task = 'Answer "yes" if the number is even, otherwise answer "no".';
-  const question = [];
-  const correctAnswer = [];
-  for (let i = 0; i < 3; i += 1) {
-    question.push(getRandom());
-    correctAnswer.push(ifNumberEven(question[i]));
-  }
-  game(task, question, correctAnswer);
-};
+export default () => game(task, getQuestionAnswer);
