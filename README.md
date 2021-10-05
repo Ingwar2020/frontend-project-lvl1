@@ -14,10 +14,12 @@ Each game consists of three rounds. To win you need to answer correctly each rou
 
 ---
  ### Minimum Requirements:
- Node.js v16.10.0
+ Node.js v14
  ### Installation:
- + Clone this repository
+ + Clone this repository and ```cd``` to the downloaded directory
  + Run ```make install```
+ + Run ```npm link```
+ + To check if the game installed correctly run ```brain-games```. You should see greeting.
  #### Even-game
 To run the game: ```brain-even```
 [![asciicast](https://asciinema.org/a/147NQrsEDCLmET1jZdSm7sIvx.svg)](https://asciinema.org/a/147NQrsEDCLmET1jZdSm7sIvx)

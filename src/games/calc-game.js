@@ -20,7 +20,7 @@ const getQuestionAnswer = () => {
   const number1 = getRandom();
   const number2 = getRandom();
   const operators = ['+', '-', '*'];
-  const operator = operators[getRandom(0, 2)];
+  const operator = operators[getRandom(0, operators.length - 1)];
   const question = `${number1} ${operator} ${number2}`;
   const correctAnswer = String(calculate(number1, operator, number2));
   return [question, correctAnswer];
